@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import ArticuloTable from "../components/ArticuloTable";
-import { obtenerArticulos } from "../services/articuloService";
+import { obtenerArticulos, eliminarArticulo } from "../services/articuloService";
 
 function Articulos() {
 
@@ -23,28 +23,54 @@ function Articulos() {
         }
 
     }
+    async function borrarArticulo(id) {
 
-   useEffect(() => {
+        const confirmar = window.confirm(
+            "¿Está seguro de eliminar este artículo?"
+        );
 
-    const cargarArticulos = async () => {
+        if (!confirmar) {
+
+            return;
+
+        }
 
         try {
 
-            const datos = await obtenerArticulos();
+            await eliminarArticulo(id);
 
-            setArticulos(datos);
+            cargarArticulos();
 
         } catch (error) {
 
             console.error(error);
 
+            alert("No fue posible eliminar el artículo.");
+
         }
 
-    };
+    }
+    useEffect(() => {
 
-    cargarArticulos();
+        const cargarArticulos = async () => {
 
-}, []);
+            try {
+
+                const datos = await obtenerArticulos();
+
+                setArticulos(datos);
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        };
+
+        cargarArticulos();
+
+    }, []);
 
     return (
 
@@ -64,7 +90,10 @@ function Articulos() {
 
             </div>
 
-            <ArticuloTable articulos={articulos} />
+            <ArticuloTable
+    articulos={articulos}
+    onEliminar={borrarArticulo}
+/>
 
         </div>
 

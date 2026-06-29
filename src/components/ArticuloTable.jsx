@@ -1,6 +1,9 @@
 import ArticuloRow from "./ArticuloRow";
 
-function ArticuloTable({ articulos }) {
+function ArticuloTable({
+    articulos,
+    onEliminar
+}) {
 
     return (
 
@@ -28,6 +31,7 @@ function ArticuloTable({ articulos }) {
                     <ArticuloRow
                         key={articulo.id}
                         articulo={articulo}
+                        onEliminar={onEliminar}
                     />
 
                 ))}

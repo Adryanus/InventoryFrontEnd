@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
-function ArticuloRow({ articulo }) {
+function ArticuloRow({
+    articulo,
+    onEliminar
+}) {
 
     return (
 
@@ -20,16 +23,16 @@ function ArticuloRow({ articulo }) {
 
                 <Link
                     to={`/articulos/editar/${articulo.id}`}
-                    className="btn btn-warning btn-sm"
+                    className="btn btn-warning btn-sm me-2"
                 >
                     Editar
                 </Link>
 
                 <button
-                    className="btn btn-danger btn-sm">
-
+                    className="btn btn-danger btn-sm"
+                    onClick={() => onEliminar(articulo.id)}
+                >
                     Eliminar
-
                 </button>
 
             </td>
