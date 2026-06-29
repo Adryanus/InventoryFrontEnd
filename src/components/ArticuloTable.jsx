@@ -1,10 +1,12 @@
+import ArticuloRow from "./ArticuloRow";
+
 function ArticuloTable({ articulos }) {
 
     return (
 
-        <table className="table table-striped">
+        <table className="table table-striped table-hover">
 
-            <thead>
+            <thead className="table-dark">
 
                 <tr>
 
@@ -13,6 +15,7 @@ function ArticuloTable({ articulos }) {
                     <th>Precio</th>
                     <th>Stock</th>
                     <th>Categoría</th>
+                    <th>Acciones</th>
 
                 </tr>
 
@@ -22,15 +25,10 @@ function ArticuloTable({ articulos }) {
 
                 {articulos.map((articulo) => (
 
-                    <tr key={articulo.id}>
-
-                        <td>{articulo.id}</td>
-                        <td>{articulo.nombre}</td>
-                        <td>${articulo.precio}</td>
-                        <td>{articulo.stock}</td>
-                        <td>{articulo.categoriaNombre}</td>
-
-                    </tr>
+                    <ArticuloRow
+                        key={articulo.id}
+                        articulo={articulo}
+                    />
 
                 ))}
 
