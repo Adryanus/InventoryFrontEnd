@@ -8,7 +8,7 @@ import {
 } from "../services/articuloService";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import { toast } from "react-toastify";
 function ArticuloForm() {
   const [articulo, setArticulo] = useState({
     nombre: "",
@@ -91,11 +91,11 @@ function ArticuloForm() {
       if (id) {
 
         await actualizarArticulo(id, nuevoArticulo);
-        alert("Artículo actualizado correctamente.");
+        toast.success("Artículo actualizado correctamente.");
       } else {
 
         await crearArticulo(nuevoArticulo);
-        alert("Artículo creado correctamente.");
+        toast.success("Artículo creado correctamente.");
       }
 
 
@@ -104,7 +104,7 @@ function ArticuloForm() {
     } catch (error) {
       console.error(error);
 
-      alert("Error al guardar el artículo.");
+      toast.error("Error al guardar el artículo.");
     }
   }
   console.log("Estado categorías:", categorias);

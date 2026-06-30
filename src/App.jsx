@@ -8,6 +8,9 @@ import Articulos from "./pages/Articulos";
 import Categorias from "./pages/Categorias";
 import NuevoArticulo from "./pages/NuevoArticulo";
 import EditarArticulo from "./pages/EditarArticulo";
+import NuevaCategoria from "./pages/NuevaCategoria";
+import EditarCategoria from "./pages/EditarCategoria";
+
 
 function App() {
   return (
@@ -21,7 +24,22 @@ function App() {
 
         <Route path="/categorias" element={<Categorias />} />
         <Route path="/articulos/nuevo" element={<NuevoArticulo />} />
-        <Route  path="/articulos/editar/:id" element={<EditarArticulo />} />
+        <Route path="/articulos/editar/:id" element={<EditarArticulo />} />
+        <Route
+          path="/categorias"
+          element={<Categorias />}
+        />
+
+        <Route
+          path="/categorias/nuevo"
+          element={<NuevaCategoria />}
+        />
+
+        <Route
+          path="/categorias/editar/:id"
+          element={<EditarCategoria />}
+        />
+
       </Routes>
 
       <Footer />
